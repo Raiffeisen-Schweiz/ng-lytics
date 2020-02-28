@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/Raiffeisen-Schweiz/ng-lytics"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "peerDependencies": {
     "@angular/common": "^9.0.2",
     "@angular/core": "^9.0.2",

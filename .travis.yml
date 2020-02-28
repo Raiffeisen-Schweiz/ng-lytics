@@ -9,6 +9,8 @@ script:
   - npm run lint
   - npm run test.ci
   - npm run build.prod
+before_deploy:
+  - cd dist/ng-lytics
 deploy:
   provider: npm
   email: $NPM_EMAIL

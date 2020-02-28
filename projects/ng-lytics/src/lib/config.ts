@@ -1,5 +1,5 @@
 export class NgLyticsConfig {
-  appName: string;
+  appName?: string;
   environmentName?: string;
   dataLayerName?: string;
   isDevMode?: boolean;

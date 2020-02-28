@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build.prod": "ng build --prod",
     "test": "ng test",
     "test.ci": "ng test ng-lytics --browsers=ChromeHeadlessNoSandbox --watch=false --code-coverage=true",
     "lint": "ng lint",

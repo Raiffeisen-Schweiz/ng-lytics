@@ -34,19 +34,19 @@ export class AppModule {}
 
 #### Configuration
 
-- **appName?**
-  - Type: `string`
+- **appName**
+  - Type: `string?`
   - Determines the name of the app.
   - Default: **defaultAppName**
-- **environmentName?**
-  - Type: `string`
+- **environmentName**
+  - Type: `string?`
   - Determines the environment.
   - Default: **dev**
-- **dataLayerName?**
-  - Type: `string`
-  - Determines the key on the window object, where the events are located.
+- **dataLayerName**
+  - Type: `string?`
+  - Determines the key on the window object, where the events are stored.
   - Default: **dataLayer**
-- **isDevMode?**
+- **isDevMode**
   - Type: `boolean?`
   - If set to _true_, additional logging will be enabled
   - Default: **false**

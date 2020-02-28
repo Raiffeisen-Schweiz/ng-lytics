@@ -6,8 +6,9 @@ addons:
 install:
   - npm ci
 script:
-  - npm run build.prod
+  - npm run lint
   - npm run test.ci
+  - npm run build.prod
 deploy:
   provider: npm
   email: $NPM_EMAIL

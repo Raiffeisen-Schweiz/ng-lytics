@@ -24,7 +24,7 @@ import { NgLytics } from '@raiffeisen-schweiz/ng-lytics';
       appName: 'defaultAppName',
       environmentName: 'dev',
       dataLayerName: 'dataLayer',
-      isDevMode: true
+      isDevMode: false
     })
   ],
   bootstrap: [AppComponent]

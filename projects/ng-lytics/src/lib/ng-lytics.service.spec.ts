@@ -124,7 +124,7 @@ describe('NgLyticsService', () => {
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
       declarations: [],
-      imports: [NgLyticsModule.forRoot()]
+      imports: [NgLyticsModule]
     });
     serviceDefaultConfig = TestBed.inject(NgLyticsService);
 

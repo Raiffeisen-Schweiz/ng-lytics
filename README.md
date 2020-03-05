@@ -4,13 +4,11 @@ An Angular wrapper for Analytics by using the datalayer concept.
 
 ## Installation
 
-First you need to install the npm module:
+1. First you need to install the npm module:
 
 `npm i @raiffeisen-schweiz/ng-lytics`
 
-## Usage
-
-#### Import the `NgLytics` module
+2. Import the `NgLytics` module
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -51,6 +49,14 @@ export class AppModule {}
   - If set to _true_, additional logging will be enabled
   - Default: **false**
 
+3. Add script from analytics provider.
+
+This module would work on its own and add all events by default to `window.dataLayer`. But you'll need to include a script from an analytics provider (Google Analytics, Adobe Analytics, ..) which consumes those events.
+
+## Sample App
+
+Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example/src/app).
+
 ## API
 
 ### NgLyticsService methods
@@ -60,10 +66,6 @@ export class AppModule {}
 - `trackAction(data: NgLyticsAction): void`: Tracks an interaction and adds an event to the dataLayer array.
 - `trackAsyncAction(data: NgLyticsAction): void`: Tracks an interaction with asynchronous payload and adds an event to the dataLayer array.
 - `registerAsyncAction(numberOfActions = 1): void`: Registers upcoming asynchronous action calls.
-
-## Sample App
-
-Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example/src/app).
 
 ## License
 

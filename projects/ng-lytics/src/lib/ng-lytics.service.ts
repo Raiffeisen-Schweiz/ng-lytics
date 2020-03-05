@@ -105,7 +105,7 @@ export class NgLyticsService {
       item => item.event === NgLyticsEventType.PageRequested || item.event === NgLyticsEventType.PageLoaded
     );
 
-    if (items.length && items[items.length - 1].type !== NgLyticsEventType.PageLoaded) {
+    if (items.length && items[items.length - 1].event !== NgLyticsEventType.PageLoaded) {
       console.warn(
         '[NgLytics] Last event `PageRequested` has no `PageLoaded` counterpart. The event was: ',
         items[items.length - 1]

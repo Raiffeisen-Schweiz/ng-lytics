@@ -44,7 +44,7 @@ export class NgLyticsService {
       isPageLoaded: false
     };
 
-    this.isLastPageLoaded();
+    this.checkForMissingPageLoaded();
     this.addEvent(event);
   }
 
@@ -100,7 +100,11 @@ export class NgLyticsService {
     this.trackAction(data);
   }
 
-  private isLastPageLoaded() {
+  private checkForMissingPageLoaded() {
+    if (!this.config.isDevMode) {
+      return;
+    }
+
     const items = (window as any)[this.config.dataLayerName].filter(
       item => item.event === NgLyticsEventType.PageRequested || item.event === NgLyticsEventType.PageLoaded
     );

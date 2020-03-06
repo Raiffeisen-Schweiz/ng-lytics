@@ -53,7 +53,7 @@ describe('NgLyticsService', () => {
     expect(window[dataLayerName][0].openAsyncActionCounter).toEqual(0);
   });
 
-  it('should log a warning when 2 page requested events consecutively', () => {
+  it('should log a warning when a page loaded event is missing', () => {
     spyOn(window.console, 'warn');
 
     const data = {} as any;

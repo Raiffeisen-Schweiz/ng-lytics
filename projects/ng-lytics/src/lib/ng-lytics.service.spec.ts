@@ -66,6 +66,40 @@ describe('NgLyticsService', () => {
     expect(window.console.warn).toHaveBeenCalled();
   });
 
+  it('should log a warning when a page requested event is missing', () => {
+    spyOn(window.console, 'warn');
+
+    service.trackPageLoaded();
+    expect(window.console.warn).toHaveBeenCalledTimes(1);
+    service.trackPageLoaded();
+    expect(window.console.warn).toHaveBeenCalledTimes(2);
+  });
+
+  it('should not log a warning when no page requested event is missing', () => {
+    spyOn(window.console, 'warn');
+    const data = {} as any;
+    service.trackPageRequested(data);
+    service.trackPageLoaded();
+    expect(window.console.warn).toHaveBeenCalledTimes(0);
+  });
+
+  it('should log a warning when openAsyncActionCounter is negative', () => {
+    spyOn(window.console, 'warn');
+    const data = {} as any;
+    service.trackPageRequested(data);
+    service.trackPageLoaded();
+    service.trackAsyncAction(data);
+    expect(window.console.warn).toHaveBeenCalled();
+  });
+
+  it('should log a warning when openAsyncActionCounter is positiv', () => {
+    spyOn(window.console, 'warn');
+    const data = {} as any;
+    service.registerAsyncAction();
+    service.trackPageRequested(data);
+    expect(window.console.warn).toHaveBeenCalled();
+  });
+
   it('should register an async action', () => {
     service.registerAsyncAction();
     service.trackPageLoaded();

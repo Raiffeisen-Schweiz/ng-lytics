@@ -13,7 +13,7 @@ import { NGLYTICS_CONFIGURATION } from './token';
 @Injectable({ providedIn: 'root' })
 export class NgLyticsService {
   private readonly config: NgLyticsConfig;
-  private asyncActionCounter = 0;
+  private openAsyncActionCounter = 0;
 
   constructor(@Optional() @Inject(NGLYTICS_CONFIGURATION) config: NgLyticsConfig) {
     const defaultConfig = new NgLyticsConfig();
@@ -31,7 +31,8 @@ export class NgLyticsService {
    * Tracks a specific view as a pageconstcn
    */
   trackPageRequested(data: NgLyticsPageRequest) {
-    this.asyncActionCounter = 0;
+    this.checkForPositivAsyncCounter();
+    this.openAsyncActionCounter = 0;
 
     const event: NgLyticsPageRequestEvent = {
       event: NgLyticsEventType.PageRequested,
@@ -40,7 +41,7 @@ export class NgLyticsService {
         appName: this.config.appName,
         environmentName: this.config.environmentName
       },
-      openAsyncActionCounter: this.asyncActionCounter,
+      openAsyncActionCounter: this.openAsyncActionCounter,
       isPageLoaded: false
     };
 
@@ -59,10 +60,11 @@ export class NgLyticsService {
   trackPageLoaded() {
     const event: NgLyticsPageLoadEvent = {
       event: NgLyticsEventType.PageLoaded,
-      openAsyncActionCounter: this.asyncActionCounter,
+      openAsyncActionCounter: this.openAsyncActionCounter,
       isPageLoaded: true
     };
 
+    this.checkForMissingPageRequested();
     this.addEvent(event);
   }
 
@@ -75,7 +77,7 @@ export class NgLyticsService {
     const event: NgLyticsActionEvent = {
       event: NgLyticsEventType.Action,
       ...data,
-      openAsyncActionCounter: this.asyncActionCounter
+      openAsyncActionCounter: this.openAsyncActionCounter
     };
 
     this.addEvent(event);
@@ -87,7 +89,7 @@ export class NgLyticsService {
    * Should be called between `trackPageRequested()` and `trackPageLoaded()`.
    */
   registerAsyncAction(numberOfActions = 1) {
-    this.asyncActionCounter += numberOfActions;
+    this.openAsyncActionCounter += numberOfActions;
   }
 
   /**
@@ -96,8 +98,9 @@ export class NgLyticsService {
    * Every `trackAsyncAction()` call needs to be registered beforehand by `registerAsyncAction()`
    */
   trackAsyncAction(data: NgLyticsAction) {
-    this.asyncActionCounter -= 1;
+    this.openAsyncActionCounter -= 1;
     this.trackAction(data);
+    this.checkForNegativeAsyncCounter();
   }
 
   private checkForMissingPageLoaded() {
@@ -117,6 +120,55 @@ export class NgLyticsService {
     }
   }
 
+  /**
+   * Checks if every PageRequested has a following PageLoaded event.
+   */
+  private checkForMissingPageRequested() {
+    if (!this.config.isDevMode) {
+      return;
+    }
+
+    const items = (window as any)[this.config.dataLayerName].filter(
+      item => item.event === NgLyticsEventType.PageRequested || item.event === NgLyticsEventType.PageLoaded
+    );
+    if (items.length === 0 || items[items.length - 1].event !== NgLyticsEventType.PageRequested) {
+      console.warn('[NgLytics] There was a `PageLoaded` without a `PageRequested` event.');
+    }
+  }
+
+  /**
+   * Checks if openAsyncActionCounter is negative.
+   */
+  private checkForNegativeAsyncCounter() {
+    if (this.config.isDevMode && this.openAsyncActionCounter < 0) {
+      console.warn(
+        '[NgLytics] The openAsyncActionCounter is negativ.',
+        'That means that not all async actions were registered. Every async action needs to be registered.',
+        'Or it could be that accidentally a trackAsyncAction() instead of a trackAction() was used.'
+      );
+    }
+  }
+
+  /**
+   * Checks if openAsyncActionCounter is positiv.
+   */
+  private checkForPositivAsyncCounter() {
+    if (this.config.isDevMode && this.openAsyncActionCounter > 0) {
+      console.warn(
+        '[NgLytics] A `PageRequested` event will be added, but the openAsyncActionCounter is still positiv',
+        'which indicates that there might be an error.\n',
+        'Possible source of errors:\n',
+        '• used trackAction() instead of trackAsyncAction()\n',
+        '• registered more async actions than needed\n',
+        '• an async request failed, so a trackAsyncAction() was not called \n',
+        '• navigated away before a trackAsyncAction() got called\n'
+      );
+    }
+  }
+
+  /**
+   * Adds an event to the data layer array on the window object
+   */
   private addEvent(event: NgLyticsPageRequestEvent | NgLyticsPageLoadEvent | NgLyticsActionEvent) {
     if (this.config.isDevMode) {
       console.log('[NgLytics]', event);

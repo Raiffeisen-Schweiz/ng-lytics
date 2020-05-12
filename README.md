@@ -13,7 +13,7 @@ An Angular wrapper for Analytics by using the datalayer concept.
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgLytics } from '@raiffeisen-schweiz/ng-lytics';
+import { NgLyticsModule } from '@raiffeisen-schweiz/ng-lytics';
 
 @NgModule({
   imports: [

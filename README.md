@@ -63,8 +63,8 @@ Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/t
 
 - `trackPageRequested(data: NgLyticsPageRequested): void`: Tracks a page as initialized and adds an event to the dataLayer array.
 - `trackPageLoaded(): void`: Tracks a page as rendered and adds an event the dataLayer array. Needs to be called after _trackPageRequested(data)_.
-- `trackAction(data: NgLyticsAction): void`: Tracks an interaction and adds an event to the dataLayer array.
-- `trackAsyncAction(data: NgLyticsAction): void`: Tracks an interaction with asynchronous payload and adds an event to the dataLayer array.
+- `trackAction(data: NgLyticsAction<T = {}>): void`: Tracks an interaction and adds an event to the dataLayer array.
+- `trackAsyncAction(data: NgLyticsAction<T = {}>): void`: Tracks an interaction with asynchronous payload and adds an event to the dataLayer array.
 - `registerAsyncAction(numberOfActions = 1): void`: Registers upcoming asynchronous action calls.
 
 ## License

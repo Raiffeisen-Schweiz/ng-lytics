@@ -1,5 +1,7 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { NgLyticsAction } from '../../../../dist/ng-lytics/lib/models';
 import { NgLyticsService } from '../../../ng-lytics/src/public-api';
+import { ClickButtonActionData } from './models';
 
 @Component({
   selector: 'app-root',
@@ -38,12 +40,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   onClick() {
-    this.ngLyicsService.trackAction({
+    // you can use an optional custom interface for the data payload to be type safe
+    const action: NgLyticsAction<ClickButtonActionData> = {
       eventInfo: {
         eventAction: 'clickButton',
         eventType: 'clickCallToAction',
         eventName: 'click on call-to-action button'
+      },
+      data: {
+        foo: 'bar'
       }
-    });
+    };
+    this.ngLyicsService.trackAction(action);
   }
 }

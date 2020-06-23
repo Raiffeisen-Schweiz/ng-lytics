@@ -30,7 +30,7 @@ export interface NgLyticsPageLoadedEvent {
   isPageLoaded: true;
 }
 
-export interface NgLyticsAction {
+export interface NgLyticsAction<T = {}> {
   eventInfo: {
     /** Type of event. E.g. openModal, submitForm, download, search */
     eventType: string;
@@ -40,7 +40,7 @@ export interface NgLyticsAction {
     eventName: string;
   };
   /** Additional optional data for this event. */
-  data?: {};
+  data?: T;
 }
 
 export interface NgLyticsActionEvent extends NgLyticsAction {

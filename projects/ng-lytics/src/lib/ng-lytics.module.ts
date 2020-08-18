@@ -13,7 +13,7 @@ export class NgLyticsModule {
     }
   }
 
-  static forRoot(config: NgLyticsConfig): ModuleWithProviders {
+  static forRoot(config: NgLyticsConfig): ModuleWithProviders<NgLyticsModule> {
     return {
       ngModule: NgLyticsModule,
       providers: [{ provide: NGLYTICS_CONFIGURATION, useValue: config }]

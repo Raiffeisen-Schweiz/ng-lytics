@@ -67,6 +67,13 @@ Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/t
 - `trackAsyncAction(data: NgLyticsAction<T = {}>): void`: Tracks an interaction with asynchronous payload and adds an event to the dataLayer array.
 - `registerAsyncAction(numberOfActions = 1): void`: Registers upcoming asynchronous action calls.
 
+## Compatibility
+
+| Angular | NgLytics    |
+| ------- | ----------- |
+| 10.x    | 2.x or less |
+| 9.x     | 1.x         |
+
 ## License
 
 MIT

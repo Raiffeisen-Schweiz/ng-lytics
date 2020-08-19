@@ -69,10 +69,10 @@ Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/t
 
 ## Compatibility
 
-| Angular | NgLytics    |
-| ------- | ----------- |
-| 10.x    | 2.x or less |
-| 9.x     | 1.x         |
+| Angular | NgLytics |
+| ------- | -------- |
+| 10.x    | 2.x      |
+| 9.x     | 1.x      |
 
 ## License
 

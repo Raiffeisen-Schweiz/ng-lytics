@@ -71,6 +71,7 @@ Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/t
 
 | Angular | NgLytics |
 | ------- | -------- |
+| 11.x    | 3.x      |
 | 10.x    | 2.x      |
 | 9.x     | 1.x      |
 

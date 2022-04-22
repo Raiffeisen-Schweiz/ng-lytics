@@ -1,4 +1,4 @@
-# NgLytics [![Build Status](https://app.travis-ci.com/Raiffeisen-Schweiz/ng-lytics.svg?branch=master)](https://app.travis-ci.com/Raiffeisen-Schweiz/ng-lytics) [![npm version](https://badge.fury.io/js/%40raiffeisen-schweiz%2Fng-lytics.svg)](https://badge.fury.io/js/%40raiffeisen-schweiz%2Fng-lytics)
+# NgLytics [![Build Status](https://github.com/Raiffeisen-Schweiz/ng-lytics/actions/workflows/ci.yml/badge.svg)](https://github.com/Raiffeisen-Schweiz/ng-lytics/actions/workflows/ci.yml) [![npm version](https://badge.fury.io/js/%40raiffeisen-schweiz%2Fng-lytics.svg)](https://badge.fury.io/js/%40raiffeisen-schweiz%2Fng-lytics)
 
 An Angular wrapper for Analytics by using the datalayer concept.
 

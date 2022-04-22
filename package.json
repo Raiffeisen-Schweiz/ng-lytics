@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "postbuild": "cp README.md LICENSE dist/ng-lytics",
     "test": "ng test",
     "test.ci": "ng test ng-lytics --browsers=ChromeHeadlessNoSandbox --watch=false --code-coverage=true",

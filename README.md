@@ -67,11 +67,21 @@ Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/t
 - `trackAsyncAction(data: NgLyticsAction<T = {}>): void`: Tracks an interaction with asynchronous payload and adds an event to the dataLayer array.
 - `registerAsyncAction(numberOfActions = 1): void`: Registers upcoming asynchronous action calls.
 
+## FAQs
+
+**When and why use `trackAsyncAction()`?**
+
+This method is used for handling asynchronous actions like loading or saving data.
+
+Example: You open page A and track it. There is a HTTP call to load additional data you want to track as an action. Before the loading of the HTTP call completes, the user navigates to page B. Now the HTTP call has finished loading and is being tracked. In this case, the action would be counted to page B which is not intended.
+
+To keep the correct order you would call `registerAsyncAction()` before navigating to page B. With this, the action after the HTTP call resolves would be counted to page A.
+
 ## Compatibility
 
 | Angular | NgLytics |
 | ------- | -------- |
-| 13.x    | 13.x      |
+| 13.x    | 13.x     |
 | 12.x    | 4.x      |
 | 11.x    | 3.x      |
 | 10.x    | 2.x      |

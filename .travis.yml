@@ -8,7 +8,7 @@ install:
 script:
   - npm run lint
   - npm run test.ci
-  - npm run build.prod
+  - npm run build
 before_deploy:
   - cd dist/ng-lytics
 deploy:

@@ -9,10 +9,10 @@ import { ClickButtonActionData } from './models';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit {
-  constructor(private ngLyicsService: NgLyticsService) {}
+  constructor(private ngLyticsService: NgLyticsService) {}
 
   ngOnInit() {
-    this.ngLyicsService.trackPageRequested({
+    this.ngLyticsService.trackPageRequested({
       page: {
         pageName: 'home',
         pageURL: '/',
@@ -20,9 +20,9 @@ export class AppComponent implements OnInit, AfterViewInit {
       }
     });
 
-    this.ngLyicsService.registerAsyncAction();
+    this.ngLyticsService.registerAsyncAction();
     setTimeout(() => {
-      this.ngLyicsService.trackAsyncAction({
+      this.ngLyticsService.trackAsyncAction({
         eventInfo: {
           eventAction: 'setData',
           eventType: 'setCustomerData',
@@ -36,7 +36,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.ngLyicsService.trackPageLoaded();
+    this.ngLyticsService.trackPageLoaded();
   }
 
   onClick() {
@@ -51,6 +51,6 @@ export class AppComponent implements OnInit, AfterViewInit {
         foo: 'bar'
       }
     };
-    this.ngLyicsService.trackAction(action);
+    this.ngLyticsService.trackAction(action);
   }
 }

@@ -1,6 +1,6 @@
 import { ModuleWithProviders, NgModule, Optional, SkipSelf } from '@angular/core';
 import { NgLyticsConfig } from './config';
-import { NGLYTICS_CONFIGURATION } from './token';
+import { provideNgLytics } from './provider';
 
 @NgModule({
   declarations: [],
@@ -16,7 +16,7 @@ export class NgLyticsModule {
   static forRoot(config: NgLyticsConfig): ModuleWithProviders<NgLyticsModule> {
     return {
       ngModule: NgLyticsModule,
-      providers: [{ provide: NGLYTICS_CONFIGURATION, useValue: config }]
+      providers: [provideNgLytics(config)]
     };
   }
 }

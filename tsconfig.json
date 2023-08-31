@@ -11,18 +11,10 @@
     "moduleResolution": "node",
     "importHelpers": true,
     "target": "ES2022",
-    "typeRoots": [
-      "node_modules/@types"
-    ],
-    "lib": [
-      "es2018",
-      "dom"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
     "paths": {
-      "ng-lytics": [
-        "dist/ng-lytics/ng-lytics",
-        "dist/ng-lytics"
-      ]
+      "@raiffeisen-schweiz/ng-lytics": ["dist/ng-lytics/ng-lytics", "dist/ng-lytics"]
     },
     "useDefineForClassFields": false
   },

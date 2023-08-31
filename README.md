@@ -8,7 +8,27 @@ An Angular wrapper for Analytics by using the datalayer concept.
 
 `npm i @raiffeisen-schweiz/ng-lytics`
 
-2. Import the `NgLytics` module
+1. Use the Standalone API with `provideNgLytics`
+
+```typescript
+import { bootstrapApplication } from '@angular/platform-browser';
+import { AppComponent } from './app/app.component';
+import { provideNgLytics } from '@raiffeisen-schweiz/ng-lytics';
+
+bootstrapApplication(AppComponent, {
+  providers: [
+    provideNgLytics({
+      appName: 'test-app',
+      environmentName: 'dev',
+      dataLayerName: 'dataLayer',
+      isDevMode: true
+    })
+  ]
+}).catch((err) => console.error(err));
+```
+
+
+or import the `NgLytics` module
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -55,7 +75,8 @@ This module would work on its own and add all events by default to `window.dataL
 
 ## Sample App
 
-Sample app is available [here](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example/src/app).
+Sample app with NgModule: [demo](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example/src/app).
+Sample app with Standalone API: [demo](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example-standalone/src/app).
 
 ## API
 
@@ -81,6 +102,7 @@ To keep the correct order you would call `registerAsyncAction()` before navigati
 
 | Angular | NgLytics |
 | ------- | -------- |
+| 15.x    | 15.x     |
 | 14.x    | 14.x     |
 | 13.x    | 13.x     |
 | 12.x    | 4.x      |

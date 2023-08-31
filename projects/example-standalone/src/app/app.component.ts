@@ -1,11 +1,15 @@
 import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { NgLyticsService, NgLyticsAction } from '@raiffeisen-schweiz/ng-lytics';
 import { ClickButtonActionData } from './models';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
   constructor(private ngLyticsService: NgLyticsService) {}

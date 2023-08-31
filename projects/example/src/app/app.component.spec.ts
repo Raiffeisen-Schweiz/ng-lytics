@@ -1,5 +1,5 @@
 import { TestBed, waitForAsync } from '@angular/core/testing';
-import { NgLyticsModule } from '../../../ng-lytics/src/lib/ng-lytics.module';
+import { NgLyticsModule } from '@raiffeisen-schweiz/ng-lytics';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {

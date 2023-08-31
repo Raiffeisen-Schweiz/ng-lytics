@@ -2,6 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { NgLyticsConfig } from './config';
 import { NgLyticsEventType } from './models';
 import { NgLyticsModule } from './ng-lytics.module';
+import { provideNgLytics } from './provider';
 import { NgLyticsService } from './ng-lytics.service';
 
 describe('NgLyticsService', () => {
@@ -15,8 +16,8 @@ describe('NgLyticsService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [],
-      imports: [
-        NgLyticsModule.forRoot({
+      providers: [
+        provideNgLytics({
           appName,
           environmentName,
           dataLayerName,
@@ -157,7 +158,6 @@ describe('NgLyticsService', () => {
 
     TestBed.resetTestingModule();
     TestBed.configureTestingModule({
-      declarations: [],
       imports: [NgLyticsModule]
     });
     serviceDefaultConfig = TestBed.inject(NgLyticsService);
@@ -168,5 +168,37 @@ describe('NgLyticsService', () => {
     expect(window[defaultConfig.dataLayerName].length === 1).toBeTruthy();
     expect(window[defaultConfig.dataLayerName][0].app.appName).toEqual(defaultConfig.appName);
     expect(window[defaultConfig.dataLayerName][0].app.environmentName).toEqual(defaultConfig.environmentName);
+  });
+
+  beforeEach(() => {});
+
+  it('should be created', () => {
+    expect(service).toBeTruthy();
+  });
+
+  it('should still work with NgModule import', () => {
+    TestBed.resetTestingModule();
+    TestBed.configureTestingModule({
+      declarations: [],
+      imports: [
+        NgLyticsModule.forRoot({
+          appName,
+          environmentName,
+          dataLayerName,
+          isDevMode
+        })
+      ]
+    });
+    service = TestBed.inject(NgLyticsService);
+
+    const data = {} as any;
+    service.trackPageRequested(data);
+
+    expect(window[dataLayerName].length === 1).toBeTruthy();
+    expect(window[dataLayerName][0].event).toEqual(NgLyticsEventType.PageRequested);
+    expect(window[dataLayerName][0].isPageLoaded).toBeFalsy();
+    expect(window[dataLayerName][0].openAsyncActionCounter).toEqual(0);
+    expect(window[dataLayerName][0].app.appName).toEqual(appName);
+    expect(window[dataLayerName][0].app.environmentName).toEqual(environmentName);
   });
 });

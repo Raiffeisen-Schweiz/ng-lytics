@@ -5,5 +5,6 @@
 export * from './lib/config';
 export { NgLyticsAction, NgLyticsPageRequest } from './lib/models';
 export * from './lib/ng-lytics.module';
+export * from './lib/provider';
 export * from './lib/ng-lytics.service';
 export * from './lib/token';

@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { NgLyticsModule } from '../../../ng-lytics/src/public-api';
+
+import { NgLyticsModule } from '@raiffeisen-schweiz/ng-lytics';
+
 import { AppComponent } from './app.component';
 
 @NgModule({

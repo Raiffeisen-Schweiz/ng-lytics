@@ -67,12 +67,6 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "projects/example/src/environments/environment.ts",
-                  "with": "projects/example/src/environments/environment.prod.ts"
-                }
-              ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -150,18 +144,11 @@
             "outputPath": "dist/example-standalone",
             "index": "projects/example-standalone/src/index.html",
             "main": "projects/example-standalone/src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "projects/example-standalone/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/example-standalone/src/favicon.ico",
-              "projects/example-standalone/src/assets"
-            ],
-            "styles": [
-              "projects/example-standalone/src/styles.scss"
-            ],
+            "assets": ["projects/example-standalone/src/favicon.ico", "projects/example-standalone/src/assets"],
+            "styles": ["projects/example-standalone/src/styles.scss"],
             "scripts": []
           },
           "configurations": {
@@ -212,19 +199,11 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "projects/example-standalone/tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
-              "projects/example-standalone/src/favicon.ico",
-              "projects/example-standalone/src/assets"
-            ],
-            "styles": [
-              "projects/example-standalone/src/styles.scss"
-            ],
+            "assets": ["projects/example-standalone/src/favicon.ico", "projects/example-standalone/src/assets"],
+            "styles": ["projects/example-standalone/src/styles.scss"],
             "scripts": []
           }
         }

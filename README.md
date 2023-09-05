@@ -102,6 +102,7 @@ To keep the correct order you would call `registerAsyncAction()` before navigati
 
 | Angular | NgLytics |
 | ------- | -------- |
+| 16.x    | 16.x     |
 | 15.x    | 15.x     |
 | 14.x    | 14.x     |
 | 13.x    | 13.x     |

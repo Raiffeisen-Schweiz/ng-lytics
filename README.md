@@ -50,6 +50,27 @@ import { NgLyticsModule } from '@raiffeisen-schweiz/ng-lytics';
 export class AppModule {}
 ```
 
+If your NgLytics configuration is depending on another service (in this example the ConfigService), you can provide it like this:
+
+```
+providers: [
+  {
+    provide: NGLYTICS_CONFIGURATION,
+    useFactory: (configService: ConfigService) =>
+      new NgLyticsConfig(
+        'defaultAppName',
+        isDevMode(),
+        config.environmentName,
+        'dataLayer'
+      ),
+    deps: [ConfigService],
+  },
+]
+```
+
+`provideNgLytics` and `NgLyticsModule.forRoot` do the same but in a more user-friendly way.
+After adding the above exmple, you can inject the service into components and use it.
+
 #### Configuration
 
 - **appName**
@@ -71,7 +92,7 @@ export class AppModule {}
 
 3. Add script from analytics provider.
 
-This module would work on its own and add all events by default to `window.dataLayer`. But you'll need to include a script from an analytics provider (Google Analytics, Adobe Analytics, ..) which consumes those events.
+This library would work on its own and add all events by default to `window.dataLayer`. But you'll need to include a script from an analytics provider (Google Analytics, Adobe Analytics, ..) which consumes those events.
 
 ## Sample App
 

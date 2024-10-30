@@ -48,22 +48,24 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/example",
+            "outputPath": {
+              "base": "dist/example"
+            },
             "index": "projects/example/src/index.html",
-            "main": "projects/example/src/main.ts",
-            "polyfills": "projects/example/src/polyfills.ts",
+            "polyfills": [
+              "projects/example/src/polyfills.ts"
+            ],
             "tsConfig": "projects/example/tsconfig.app.json",
             "assets": ["projects/example/src/favicon.ico", "projects/example/src/assets"],
             "styles": ["projects/example/src/styles.css"],
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/example/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -72,8 +74,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -139,17 +139,19 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/example-standalone",
+            "outputPath": {
+              "base": "dist/example-standalone"
+            },
             "index": "projects/example-standalone/src/index.html",
-            "main": "projects/example-standalone/src/main.ts",
             "polyfills": ["zone.js"],
             "tsConfig": "projects/example-standalone/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["projects/example-standalone/src/favicon.ico", "projects/example-standalone/src/assets"],
             "styles": ["projects/example-standalone/src/styles.scss"],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/example-standalone/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -168,9 +170,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

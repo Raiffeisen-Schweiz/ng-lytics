@@ -5,7 +5,9 @@ import { ClickButtonActionData } from './models';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  /* eslint-disable  @angular-eslint/prefer-standalone */
+  standalone: false
 })
 export class AppComponent implements OnInit, AfterViewInit {
   constructor(private ngLyticsService: NgLyticsService) {}

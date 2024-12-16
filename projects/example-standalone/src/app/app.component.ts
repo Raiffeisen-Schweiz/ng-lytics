@@ -5,11 +5,10 @@ import { NgLyticsService, NgLyticsAction } from '@raiffeisen-schweiz/ng-lytics';
 import { ClickButtonActionData } from './models';
 
 @Component({
-  selector: 'app-root',
-  standalone: true,
-  imports: [CommonModule],
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+    selector: 'app-root',
+    imports: [CommonModule],
+    templateUrl: './app.component.html',
+    styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
   constructor(private ngLyticsService: NgLyticsService) {}

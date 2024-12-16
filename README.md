@@ -123,6 +123,7 @@ To keep the correct order you would call `registerAsyncAction()` before navigati
 
 | Angular | NgLytics |
 |---------|----------|
+| 19.x    | 19.x     |
 | 18.x    | 18.x     |
 | 17.x    | 17.x     |
 | 16.x    | 16.x     |

@@ -7,8 +7,8 @@
     "inlineSources": true,
     "types": [],
     "lib": [
-      "dom",
-      "es2018"
+      "DOM",
+      "ES2022"
     ]
   },
   "angularCompilerOptions": {

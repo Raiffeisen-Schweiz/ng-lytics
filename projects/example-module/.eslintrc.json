@@ -1,18 +1,13 @@
 {
   "extends": "../../.eslintrc.json",
-  "ignorePatterns": [
-    "!**/*"
-  ],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "projects/ng-lytics/tsconfig.lib.json",
-          "projects/ng-lytics/tsconfig.lib.prod.json",
-          "projects/ng-lytics/tsconfig.spec.json"
+          "projects/example-module/tsconfig.app.json",
+          "projects/example-module/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },
@@ -21,7 +16,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "lib",
+            "prefix": "app",
             "style": "kebab-case"
           }
         ],
@@ -29,7 +24,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "lib",
+            "prefix": "app",
             "style": "camelCase"
           }
         ]

@@ -12,10 +12,10 @@ An Angular wrapper for Analytics by using the datalayer concept.
 
 ```typescript
 import { bootstrapApplication } from '@angular/platform-browser';
-import { AppComponent } from './app/app.component';
+import { App } from './app/app.component';
 import { provideNgLytics } from '@raiffeisen-schweiz/ng-lytics';
 
-bootstrapApplication(AppComponent, {
+bootstrapApplication(App, {
   providers: [
     provideNgLytics({
       appName: 'test-app',
@@ -45,14 +45,14 @@ import { NgLyticsModule } from '@raiffeisen-schweiz/ng-lytics';
       isDevMode: false
     })
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [App]
 })
 export class AppModule {}
 ```
 
 If your NgLytics configuration is depending on another service (in this example the ConfigService), you can provide it like this:
 
-```
+```typescript
 providers: [
   {
     provide: NGLYTICS_CONFIGURATION,
@@ -69,7 +69,7 @@ providers: [
 ```
 
 `provideNgLytics` and `NgLyticsModule.forRoot` do the same but in a more user-friendly way.
-After adding the above exmple, you can inject the service into components and use it.
+After adding the above example, you can inject the service into components and use it.
 
 #### Configuration
 
@@ -96,8 +96,8 @@ This library would work on its own and add all events by default to `window.data
 
 ## Sample App
 
-Sample app with NgModule: [demo](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example/src/app).
-Sample app with Standalone API: [demo](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example-standalone/src/app).
+Sample app with Standalone API: [demo](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example/src/app).
+Sample app with NgModule: [demo](https://github.com/Raiffeisen-Schweiz/ng-lytics/tree/master/projects/example-module/src/app).
 
 ## API
 
@@ -123,6 +123,7 @@ To keep the correct order you would call `registerAsyncAction()` before navigati
 
 | Angular | NgLytics |
 |---------|----------|
+| 20.x    | 20.x     |
 | 19.x    | 19.x     |
 | 18.x    | 18.x     |
 | 17.x    | 17.x     |

@@ -1,16 +1,18 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, inject, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
 import { NgLyticsService, NgLyticsAction } from '@raiffeisen-schweiz/ng-lytics';
-import { ClickButtonActionData } from './models';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  /* eslint-disable  @angular-eslint/prefer-standalone */
-  standalone: false
+    selector: 'app-root',
+    imports: [CommonModule],
+    templateUrl: './app.html',
+    styleUrls: ['./app.scss']
 })
-export class AppComponent implements OnInit, AfterViewInit {
-  constructor(private ngLyticsService: NgLyticsService) {}
+export class App implements OnInit, AfterViewInit {
+  private ngLyticsService = inject(NgLyticsService);
+
+  constructor() {}
 
   ngOnInit() {
     this.ngLyticsService.trackPageRequested({
@@ -54,4 +56,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     };
     this.ngLyticsService.trackAction(action);
   }
+
+}
+
+export interface ClickButtonActionData {
+  foo: string;
 }

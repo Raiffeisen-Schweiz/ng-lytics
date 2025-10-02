@@ -1,4 +1,4 @@
-import { Inject, Injectable, Optional } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { NgLyticsConfig } from './config';
 import {
   NgLyticsAction,
@@ -15,7 +15,8 @@ export class NgLyticsService {
   private readonly config: NgLyticsConfig;
   private openAsyncActionCounter = 0;
 
-  constructor(@Optional() @Inject(NGLYTICS_CONFIGURATION) config: NgLyticsConfig) {
+  constructor() {
+    const config = inject(NGLYTICS_CONFIGURATION, { optional: true });
     const defaultConfig = new NgLyticsConfig();
     this.config = {
       appName: (config && config.appName) || defaultConfig.appName,
